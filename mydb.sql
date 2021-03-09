@@ -1,13 +1,14 @@
 create table if not exists Musicians(
-	Name varchar(40) primary key, 
-	TracksTitles varchar(40) unique
+	id_musician serial primary key,
+	Name varchar(40) not null
 );
 
 
 create table if not exists Albums(
+	id_album serial not null,
 	AlbumTitle varchar(40) primary key unique, 
 	Release_Year integer not null check(Release_Year>0),
-	Tracks varchar(40) unique references Musicians(TracksTitles)
+	Singer varchar(40) unique references Musicians(id_musician)
 );
 
 create table if not exists Tracks( 
